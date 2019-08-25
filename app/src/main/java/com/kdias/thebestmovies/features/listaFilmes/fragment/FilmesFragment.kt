@@ -38,6 +38,7 @@ class FilmesFragment : Fragment(){
 
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
+                    Log.e("change","CHANGE")
                     for (m in p0.children){
                         val movie = m.getValue(Movie:: class.java)
                         movies.add(movie!!)
@@ -68,6 +69,12 @@ class FilmesFragment : Fragment(){
     })*/
 
         return view
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
 
     }
 

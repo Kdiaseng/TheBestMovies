@@ -5,4 +5,12 @@
     <color name="colorAccent">#D81B60</color>
     <color name="item_name">#535353</color>
     <color name="description">#a9a9a9</color>
+    <color name="lavendar">#6D7993</color>
+    <color name="ink">#062f4f</color>
+    <color name="blackboard">#565656</color>
+    <color name="navyblue">#18121E</color>
+    <color name="gunmetal">#233237</color>
+    <color name="prussianblue">#0b3c5d</color>
+    <color name="skyblue">#328CC1</color>
+    <color name="ivoryblack">#1D2731</color>
 </resources>

@@ -37,8 +37,8 @@ class AdapterMovie(private val list: List<Movie>, val clickList: (movie: Movie) 
             val title = itemView.title
             title.text = movie.title
 
-            val description = itemView.description
-            description.text = movie.description
+            val release = itemView.release
+            release.text = movie.released
 
             val rutime = itemView.rutime
             rutime.text = movie.runtime
