@@ -19,6 +19,9 @@
     <string name="text_welcome_sub">Acesse sua conta para cadastrar filmes e séries</string>
     <string name="text_forget_password">Esqueci minha senha</string>
     <string name="button_label">Entrar</string>
+    <string name="input_title">Título do Filme</string>
+    <string name="input_description">Descrição</string>
+    <string name="input_dt_publicacao">Data de publicação</string>
 
 
 </resources>
