@@ -53,20 +53,7 @@ class FilmesFragment : Fragment(){
             }
 
         })
-   /* FoodApi.retrofitService.getListMenu().enqueue(object : retrofit2.Callback<List<MenuModel>> {
-        override fun onFailure(call: Call<List<MenuModel>>, t: Throwable) {
-            progressBar.visibility = View.GONE
-        }
 
-        override fun onResponse(call: Call<List<MenuModel>>, response: Response<List<MenuModel>>) {
-            progressBar.visibility = View.GONE
-            rvList.visibility = View.VISIBLE
-            rvList.adapter = AdapterMenu(response.body()!!) {
-
-            }
-        }
-
-    })*/
 
         return view
 
