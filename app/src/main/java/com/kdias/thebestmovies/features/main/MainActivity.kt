@@ -1,5 +1,6 @@
 package com.kdias.thebestmovies.features.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -9,8 +10,10 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import com.kdias.thebestmovies.R
+import com.kdias.thebestmovies.features.cadastroFilmes.CadastroFilmesActivity
 import com.kdias.thebestmovies.features.listaFilmes.fragment.FilmesFragment
 import com.kdias.thebestmovies.features.listaSeries.SeriesFragment
+import com.kdias.thebestmovies.features.login.LoginActivity
 import com.kdias.thebestmovies.features.main.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -79,7 +82,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
-                // Handle the camera action
+                var intent = Intent(this, LoginActivity:: class.java)
+                startActivity(intent)
             }
 //            R.id.nav_gallery -> {
 //
