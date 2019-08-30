@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         btnLogin.setOnClickListener{view ->
-            signIn(view,"email@gmail.com", "senha")
+            signIn(view,"teste@gmail.com", "4343434")
         }
     }
 
@@ -30,8 +30,8 @@ class LoginActivity : AppCompatActivity() {
         showMessage(view,"Authenticating...")
         fbAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this,
             OnCompleteListener<AuthResult> { task ->
-                if (task.isComplete){
-                    var intent = Intent(this, CadastroFilmesActivity:: class.java)
+                if (task.isSuccessful){
+                    var intent = Intent(this@LoginActivity, CadastroFilmesActivity:: class.java)
                     intent.putExtra("id", fbAuth.currentUser?.email)
                     startActivity(intent)
                 }else{

@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
-                var intent = Intent(this, LoginActivity:: class.java)
+                var intent = Intent(this@MainActivity, LoginActivity:: class.java)
                 startActivity(intent)
             }
 //            R.id.nav_gallery -> {
