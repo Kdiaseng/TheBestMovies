@@ -22,7 +22,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         btnLogin.setOnClickListener{view ->
-            signIn(view,"teste@gmail.com", "4343434")
+
+            signIn(view,edtEmail.text.toString(), edtPassword.text.toString())
         }
     }
 

@@ -16,13 +16,19 @@
     <string name="hint_login">Email</string>
     <string name="input_title">Título do Filme</string>
     <string name="input_description">Descrição</string>
-    <string name="input_dt_publicacao">Data de publicação</string>
+    <string name="input_dt_publicacao">Data de lançamento</string>
     <string name="text_forget_password">Esqueci minha senha</string>
     <string name="button_label">Entrar</string>
     <string name="hint_password">Senha</string>
     <string name="text_welcome_sub">Acesse sua conta para cadastrar filmes e séries</string>
     <string name="text_welcome">Seja bem vindo!</string>
-
+    <string name="rd_filme">Filmes</string>
+    <string name="rd_series">Series</string>
+    <string name="input_dt_duracao">Duração. Ex: 120 min</string>
+    <string name="input_poster">Nome do Poster</string>
+    <string name="input_url_trailer">Url Trailer</string>
+    <string name="button_cadastrar">Cadastrar</string>
+    <string name="logout">logout</string>
 
 
 </resources>
