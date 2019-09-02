@@ -41,11 +41,13 @@ class FilmesFragment : Fragment(){
                     Log.e("change","CHANGE")
                     for (m in p0.children){
                         val movie = m.getValue(Movie:: class.java)
+                        Log.e("MOVIE",movie!!.title)
                         movies.add(movie!!)
 
                     }
                     progressBar.visibility = View.GONE
                     rvList.visibility = View.VISIBLE
+                    Log.i("adpter",movies[0].title)
                     rvList.adapter = AdapterMovie(movies){
 
                     }
