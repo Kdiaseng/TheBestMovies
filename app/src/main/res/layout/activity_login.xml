@@ -8,7 +8,7 @@
     tools:context=".features.login.LoginActivity">
 
     <LinearLayout
-        android:padding="30dp"
+        android:padding="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -75,6 +75,9 @@
             android:clipToPadding="false">
 
             <com.google.android.material.button.MaterialButton
+                android:textAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textSize="20dp"
+                android:paddingTop="5dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
                 android:id="@+id/btnLogin"

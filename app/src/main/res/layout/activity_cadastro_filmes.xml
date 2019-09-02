@@ -12,9 +12,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:padding="30dp"
+            android:padding="40dp"
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:background="@color/colorPrimary"
             android:layout_height="match_parent">
 
             <RadioGroup
@@ -47,6 +48,7 @@
             </RadioGroup>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:textColorHint="@android:color/white"
@@ -121,6 +123,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:textAppearance="@style/Widget.MaterialComponents.Button.Icon"
                     android:id="@+id/btnUploadPoster"
+                    android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@android:drawable/ic_menu_upload"
@@ -162,9 +165,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:textAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textSize="20dp"
+                android:paddingTop="5dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
-                android:id="@+id/btnCadastrar"
                 android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
