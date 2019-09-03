@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType.TYPE_NULL
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.DatePicker
+import android.widget.RadioButton
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.kdias.thebestmovies.R
+import com.kdias.thebestmovies.features.listaFilmes.fragment.model.Movie
 import kotlinx.android.synthetic.main.activity_cadastro_filmes.*
+import kotlinx.android.synthetic.main.activity_login.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,6 +33,9 @@ class CadastroFilmesActivity : AppCompatActivity() {
         edtReleased.isFocusableInTouchMode = true
         edtReleased.inputType = TYPE_NULL
 
+        cadastrar.setOnClickListener{view ->
+            saveMovie()
+        }
 
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -60,6 +67,40 @@ class CadastroFilmesActivity : AppCompatActivity() {
                 this.finish()
             }
         }
+    }
+
+    private fun saveMovie() {
+
+        val selectId = rdgroup.checkedRadioButtonId
+        val typeMovie: String
+
+        if (selectId != -1) {
+            val radio: RadioButton = findViewById(selectId)
+            typeMovie = radio.text.toString()
+        } else {
+            typeMovie = ""
+        }
+
+
+        val ref = FirebaseDatabase.getInstance().getReference("Movies")
+        val idMovie = ref.push().key
+
+        val movie = Movie(
+            idMovie!!,
+            typeMovie,
+            edtDescricao.text.toString().trim(),
+            edtReleased.text.toString(),
+            edtTitle.text.toString().trim(),
+            edtPoster.text.toString(),
+            edtRutime.text.toString().trim(),
+            edtUrlTrailer.text.toString().trim()
+
+        )
+
+        ref.child(idMovie).setValue(movie).addOnCompleteListener {
+            Toast.makeText(applicationContext, "Filme cadastrado com sucesso",Toast.LENGTH_SHORT)
+        }
+
     }
 
     private fun updateDateInView() {

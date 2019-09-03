@@ -20,6 +20,7 @@
 
             <RadioGroup
                 android:layout_width="match_parent"
+                android:id="@+id/rdgroup"
                 android:orientation="vertical"
                 android:checkedButton="@id/rdFilmes"
                 android:layout_height="wrap_content">
@@ -192,6 +193,7 @@
             <com.google.android.material.button.MaterialButton
                 android:textAppearance="@style/Widget.MaterialComponents.Button.TextButton"
                 android:textSize="20dp"
+                android:id="@+id/cadastrar"
                 android:paddingTop="5dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
