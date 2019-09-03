@@ -12,10 +12,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:padding="40dp"
+            android:padding="30dp"
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:background="@color/colorPrimary"
+            android:background="@color/gunmetal"
             android:layout_height="match_parent">
 
             <RadioGroup
@@ -80,22 +80,8 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:textColorHint="@android:color/white"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:hint="@string/input_dt_publicacao">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtReleased"
-                    android:textColor="@android:color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -112,6 +98,45 @@
                     android:layout_height="match_parent"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:textAppearance="@style/Widget.MaterialComponents.Button.Icon"
+                    android:id="@+id/btnInputDate"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@android:drawable/ic_menu_today"
+                    android:layout_marginRight="10dp"
+                    app:iconSize="45dp" />
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:textColorHint="@android:color/white"
+                    android:layout_height="wrap_content"
+                    android:inputType= "none"
+                    android:hint="@string/input_dt_publicacao">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:id="@+id/edtReleased"
+                        android:textColor="@android:color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_marginTop="20dp"
