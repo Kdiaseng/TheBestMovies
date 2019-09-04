@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "519045923185-ig2iltqsclefkbbpl83pt1q444j6htmm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kdias.thebestmovies",
+            "certificate_hash": "115b4ebcc44a9df2c33332fbc26f82b739479ecf"
+          }
+        },
+        {
           "client_id": "519045923185-i5p1nfboq0jlg63a0q6enfbq86pi99lq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

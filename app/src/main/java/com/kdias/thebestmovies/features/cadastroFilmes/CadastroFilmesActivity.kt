@@ -1,9 +1,14 @@
 package com.kdias.thebestmovies.features.cadastroFilmes
 
+import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.InputType.TYPE_NULL
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,28 +18,42 @@ import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.kdias.thebestmovies.R
 import com.kdias.thebestmovies.features.listaFilmes.fragment.model.Movie
 import kotlinx.android.synthetic.main.activity_cadastro_filmes.*
 import kotlinx.android.synthetic.main.activity_login.*
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
 class CadastroFilmesActivity : AppCompatActivity() {
     var fbAuth = FirebaseAuth.getInstance()
     var cal = Calendar.getInstance()
+    private val PICK_IMAGE_REQUEST = 71
+    private var filePath: Uri? = null
+    private var firebase: FirebaseStorage? = null
+    private var storageReference: StorageReference? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_filmes)
 
+        firebase = FirebaseStorage.getInstance()
+        storageReference = FirebaseStorage.getInstance().reference
+
         edtReleased.isFocusable = true
         edtReleased.isFocusableInTouchMode = true
         edtReleased.inputType = TYPE_NULL
 
+        btnUploadPoster.setOnClickListener {
+            launchGallery()
+        }
+
         cadastrar.setOnClickListener{view ->
-            saveMovie()
+            saveMovie(view)
         }
 
 
@@ -69,7 +88,16 @@ class CadastroFilmesActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveMovie() {
+
+    private fun launchGallery() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+    }
+
+
+    private fun saveMovie(view: View?) {
 
         val selectId = rdgroup.checkedRadioButtonId
         val typeMovie: String
@@ -98,9 +126,23 @@ class CadastroFilmesActivity : AppCompatActivity() {
         )
 
         ref.child(idMovie).setValue(movie).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Filme cadastrado com sucesso",Toast.LENGTH_SHORT)
+            Snackbar.make(view!!, "Cadastro feito com sucesso", Snackbar.LENGTH_INDEFINITE).setAction("Action", null).show()
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            if(data == null || data.data == null){
+                return
+            }
+
+            filePath = data.data
+
+            Log.e("FILEPAH",filePath.toString())
+
+        }
     }
 
     private fun updateDateInView() {
