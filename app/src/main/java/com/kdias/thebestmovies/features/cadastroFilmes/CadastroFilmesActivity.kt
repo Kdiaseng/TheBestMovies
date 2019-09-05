@@ -15,11 +15,14 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.RadioButton
 import android.widget.Toast
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import com.kdias.thebestmovies.R
 import com.kdias.thebestmovies.features.listaFilmes.fragment.model.Movie
 import kotlinx.android.synthetic.main.activity_cadastro_filmes.*
@@ -36,6 +39,8 @@ class CadastroFilmesActivity : AppCompatActivity() {
     private var firebase: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
 
+    var urlPoster: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +53,7 @@ class CadastroFilmesActivity : AppCompatActivity() {
         edtReleased.isFocusableInTouchMode = true
         edtReleased.inputType = TYPE_NULL
 
-        btnUploadPoster.setOnClickListener {
+        imgUploadPoster.setOnClickListener {
             launchGallery()
         }
 
@@ -109,9 +114,12 @@ class CadastroFilmesActivity : AppCompatActivity() {
             typeMovie = ""
         }
 
+        uploadPoster()
 
         val ref = FirebaseDatabase.getInstance().getReference("Movies")
         val idMovie = ref.push().key
+
+
 
         val movie = Movie(
             idMovie!!,
@@ -119,7 +127,7 @@ class CadastroFilmesActivity : AppCompatActivity() {
             edtDescricao.text.toString().trim(),
             edtReleased.text.toString(),
             edtTitle.text.toString().trim(),
-            edtPoster.text.toString(),
+            urlPoster,
             edtRutime.text.toString().trim(),
             edtUrlTrailer.text.toString().trim()
 
@@ -139,6 +147,11 @@ class CadastroFilmesActivity : AppCompatActivity() {
             }
 
             filePath = data.data
+            try{
+                imgUploadPoster.setImageURI(data?.data)
+            }catch (e : IOException){
+                e.printStackTrace()
+            }
 
             Log.e("FILEPAH",filePath.toString())
 
@@ -174,5 +187,32 @@ class CadastroFilmesActivity : AppCompatActivity() {
     fun signOut() {
         fbAuth.signOut()
 
+    }
+
+    private fun uploadPoster(){
+        if (filePath != null){
+            val ref = storageReference?.child("Posters/" + UUID.randomUUID().toString())
+            val uploadTask = ref?.putFile(filePath!!)
+
+            val urlTask = uploadTask?.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>>{ task ->
+                    if(!task.isSuccessful){
+                        task.exception?.let{
+                            throw it
+                        }
+                    }
+
+                return@Continuation ref.downloadUrl
+            })?.addOnCompleteListener{task ->
+                if (task.isSuccessful){
+                    Log.e("isSuccessful", "passou")
+                    urlPoster = task.result.toString()
+                    Log.e("urlPoster", urlPoster)
+                }else{
+                    Log.e("isSuccessful", "nao passou")
+                }
+            }?.addOnFailureListener {
+
+            }
+        }
     }
 }

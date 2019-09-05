@@ -18,35 +18,53 @@
             android:background="@color/gunmetal"
             android:layout_height="match_parent">
 
-            <RadioGroup
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:id="@+id/rdgroup"
-                android:orientation="vertical"
-                android:checkedButton="@id/rdFilmes"
-                android:layout_height="wrap_content">
+                android:layout_height="98dp"
+                android:background="@color/gunmetalDark"
+                android:orientation="horizontal">
 
-                <RadioButton
-                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-                    android:textColor="@android:color/white"
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/imgUploadPoster"
+                    android:layout_width="81dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/ic_menu_camera" />
+
+                <RadioGroup
+                    android:id="@+id/rdgroup"
+                    android:layout_width="143dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/rd_filme"
-                    android:id="@+id/rdFilmes"/>
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:checkedButton="@id/rdFilmes"
+                    android:orientation="vertical">
 
-                <RadioButton
-                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-                    android:paddingLeft="10dp"
-                    android:textColor="@android:color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rd_series"
-                    android:id="@+id/rdSeries"/>
+                    <RadioButton
+                        android:id="@+id/rdFilmes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/rd_filme"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                        android:textColor="@android:color/white" />
+
+                    <RadioButton
+                        android:id="@+id/rdSeries"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/rd_series"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                        android:textColor="@android:color/white" />
 
 
+                </RadioGroup>
 
 
-            </RadioGroup>
+            </LinearLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="10dp"
@@ -139,40 +157,7 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-
-                <com.google.android.material.button.MaterialButton
-                    android:textAppearance="@style/Widget.MaterialComponents.Button.Icon"
-                    android:id="@+id/btnUploadPoster"
-                    android:paddingLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:icon="@android:drawable/ic_menu_upload"
-                    android:layout_marginRight="10dp"
-                    app:iconSize="45dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:layout_width="match_parent"
-                    android:textColorHint="@android:color/white"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/input_poster">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtPoster"
-                        android:textColor="@android:color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
