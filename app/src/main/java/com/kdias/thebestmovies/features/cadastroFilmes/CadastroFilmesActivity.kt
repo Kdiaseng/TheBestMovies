@@ -58,7 +58,8 @@ class CadastroFilmesActivity : AppCompatActivity() {
         }
 
         cadastrar.setOnClickListener{view ->
-            saveMovie(view)
+            uploadPoster(view)
+          //  saveMovie(view)
         }
 
 
@@ -114,12 +115,9 @@ class CadastroFilmesActivity : AppCompatActivity() {
             typeMovie = ""
         }
 
-        uploadPoster()
 
         val ref = FirebaseDatabase.getInstance().getReference("Movies")
         val idMovie = ref.push().key
-
-
 
         val movie = Movie(
             idMovie!!,
@@ -189,7 +187,7 @@ class CadastroFilmesActivity : AppCompatActivity() {
 
     }
 
-    private fun uploadPoster(){
+    private fun uploadPoster(view: View?){
         if (filePath != null){
             val ref = storageReference?.child("Posters/" + UUID.randomUUID().toString())
             val uploadTask = ref?.putFile(filePath!!)
@@ -206,6 +204,7 @@ class CadastroFilmesActivity : AppCompatActivity() {
                 if (task.isSuccessful){
                     Log.e("isSuccessful", "passou")
                     urlPoster = task.result.toString()
+                    saveMovie(view)
                     Log.e("urlPoster", urlPoster)
                 }else{
                     Log.e("isSuccessful", "nao passou")

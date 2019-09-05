@@ -33,21 +33,28 @@ class FilmesFragment : Fragment(){
 
         ref.addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
+                Log.e("Cancelado","Cancelado")
                 progressBar.visibility = View.GONE
             }
 
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
-                    Log.e("change","CHANGE")
+                    movies = mutableListOf()
+                   if (progressBar.visibility.equals(View.GONE)){
+
+
+
+                   }
                     for (m in p0.children){
                         val movie = m.getValue(Movie:: class.java)
                         Log.e("MOVIE",movie!!.title)
                         movies.add(movie!!)
 
                     }
+                    Log.e("visibility",progressBar.visibility.toString())
                     progressBar.visibility = View.GONE
                     rvList.visibility = View.VISIBLE
-                    Log.i("adpter",movies[0].title)
+                    Log.e("adpter",movies[0].title)
                     rvList.adapter = AdapterMovie(movies){
 
                     }
