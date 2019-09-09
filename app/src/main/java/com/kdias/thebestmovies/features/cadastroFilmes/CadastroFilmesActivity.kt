@@ -25,6 +25,8 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.kdias.thebestmovies.R
 import com.kdias.thebestmovies.features.listaFilmes.fragment.model.Movie
+import com.kdias.thebestmovies.features.login.LoginActivity
+import com.kdias.thebestmovies.features.main.MainActivity
 import kotlinx.android.synthetic.main.activity_cadastro_filmes.*
 import kotlinx.android.synthetic.main.activity_login.*
 import java.io.IOException
@@ -58,7 +60,7 @@ class CadastroFilmesActivity : AppCompatActivity() {
         }
 
         cadastrar.setOnClickListener{view ->
-            uploadPoster(view)
+            uploadPosterAndSave(view)
           //  saveMovie(view)
         }
 
@@ -133,6 +135,8 @@ class CadastroFilmesActivity : AppCompatActivity() {
 
         ref.child(idMovie).setValue(movie).addOnCompleteListener {
             Snackbar.make(view!!, "Cadastro feito com sucesso", Snackbar.LENGTH_INDEFINITE).setAction("Action", null).show()
+            var intent = Intent(this@CadastroFilmesActivity, MainActivity:: class.java)
+            startActivity(intent)
         }
 
     }
@@ -187,7 +191,7 @@ class CadastroFilmesActivity : AppCompatActivity() {
 
     }
 
-    private fun uploadPoster(view: View?){
+    private fun uploadPosterAndSave(view: View?){
         if (filePath != null){
             val ref = storageReference?.child("Posters/" + UUID.randomUUID().toString())
             val uploadTask = ref?.putFile(filePath!!)
