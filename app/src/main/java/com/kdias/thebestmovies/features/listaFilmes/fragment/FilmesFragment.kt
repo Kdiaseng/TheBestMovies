@@ -34,9 +34,11 @@ class FilmesFragment : Fragment() {
 
         movies = mutableListOf()
 
-        ref = FirebaseDatabase.getInstance().getReference("Movies")
+        ref = FirebaseDatabase.getInstance().getReference()
 
-        ref.addValueEventListener(object : ValueEventListener {
+        val select = ref.child("Movies").orderByChild("tipo").equalTo("Filmes");
+
+        select.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 progressBar.visibility = View.GONE
             }

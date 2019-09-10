@@ -26,7 +26,9 @@ class SeriesFragment : Fragment(){
         ref = FirebaseDatabase.getInstance().getReference()
 
 
-        ref.addValueEventListener(object : ValueEventListener {
+         val select = ref.child("Movies").orderByChild("tipo").equalTo("Séries");
+
+        select.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 progressBar.visibility = View.GONE
             }
