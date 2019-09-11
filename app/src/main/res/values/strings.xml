@@ -29,6 +29,8 @@
     <string name="input_url_trailer">Url Trailer</string>
     <string name="button_cadastrar">Cadastrar</string>
     <string name="logout">logout</string>
+    <string name="button_play_movie">Play Trailer</string>
+    <string name="description">Aquaman é um filme estadunidense de 2018, baseado no personagem homônimo da DC Comics, distribuído pela Warner Bros. Pictures, sendo o sexto filme do Universo Estendido DC.</string>
 
 
 </resources>

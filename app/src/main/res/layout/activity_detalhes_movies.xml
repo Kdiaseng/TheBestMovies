@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.detalhesMovies.DetalhesMoviesActivity">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <VideoView
+            android:id="@+id/vvTrailer"
+            android:layout_width="match_parent"
+            android:layout_height="280dp">
+        </VideoView>
+
+        <LinearLayout
+        android:layout_marginTop="233dp"
+        android:layout_marginLeft="20dp"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/posterDatalhes"
+            android:layout_width="150dp"
+            android:src="@drawable/common_full_open_on_phone"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="283dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textStyle="bold"
+               android:layout_marginLeft="180dp"
+                android:typeface="sans"
+                android:id="@+id/tvTitleMovie"
+                android:text="Title"
+                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+            <TextView
+                android:layout_marginLeft="180dp"
+                android:id="@+id/tvReleased"
+                android:text="2019"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+            <TextView
+                android:layout_marginLeft="180dp"
+                android:id="@+id/tvRutime"
+                android:text="2h 30 min"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="341dp"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/tvLabelDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textSize="30dp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:textSize="25dp">
+                </TextView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
