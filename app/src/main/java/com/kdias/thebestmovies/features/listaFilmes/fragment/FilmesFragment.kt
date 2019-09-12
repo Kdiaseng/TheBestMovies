@@ -36,9 +36,9 @@ class FilmesFragment : Fragment() {
 
         ref = FirebaseDatabase.getInstance().getReference()
 
-        val select = ref.child("Movies").orderByChild("tipo").equalTo("Filmes");
+        val select = ref.child("Movies").orderByChild("tipo").equalTo("Filmes")
 
-        select.addListenerForSingleValueEvent(object : ValueEventListener {
+        select.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 progressBar.visibility = View.GONE
             }
@@ -47,7 +47,9 @@ class FilmesFragment : Fragment() {
                 if (p0.exists()) {
                     movies = mutableListOf()
                     for (m in p0.children) {
+
                         val movie = m.getValue(Movie::class.java)
+                        Log.e("childen",movie!!.released)
                         movies.add(movie!!)
 
                     }

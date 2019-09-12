@@ -28,7 +28,7 @@ class SeriesFragment : Fragment(){
 
          val select = ref.child("Movies").orderByChild("tipo").equalTo("Séries");
 
-        select.addListenerForSingleValueEvent(object : ValueEventListener {
+        select.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 progressBar.visibility = View.GONE
             }
