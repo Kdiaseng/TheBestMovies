@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.kdias.thebestmovies.R
 import com.kdias.thebestmovies.features.api.FoodApi
+import com.kdias.thebestmovies.features.detalhesMovies.DetalhesMoviesActivity
 import com.kdias.thebestmovies.features.listaFilmes.fragment.model.AdapterMenu
 import com.kdias.thebestmovies.features.listaFilmes.fragment.model.MenuModel
 import com.kdias.thebestmovies.features.listaFilmes.fragment.model.Movie
@@ -54,7 +55,9 @@ class FilmesFragment : Fragment() {
 
                     }
                     rvList.adapter = AdapterMovie(movies) {
-
+                            val intent = Intent(context, DetalhesMoviesActivity::class.java)
+                            intent.putExtra("movie",it)
+                            startActivity(intent)
                     }
                     progressBar.visibility = View.GONE
                     rvList.visibility = View.VISIBLE

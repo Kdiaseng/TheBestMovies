@@ -3,101 +3,121 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.kdias.thebestmovies.features.detalhesMovies.viewModel.DetalhesMoviesViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".features.detalhesMovies.DetalhesMoviesActivity">
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <VideoView
-                android:id="@+id/vvTrailer"
+            android:layout_height="match_parent">
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="280dp"></VideoView>
-
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="233dp"
-                android:background="@android:color/holo_blue_dark">
-
-                <ImageView
-                    android:id="@+id/posterDatalhes"
-                    android:layout_width="150dp"
-                    android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/common_full_open_on_phone" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="283dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvTitleMovie"
+                <VideoView
+                    android:id="@+id/vvTrailer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="180dp"
-                    android:text="Title"
-                    android:textSize="30dp"
-                    android:textStyle="bold"
-                    android:typeface="sans"></TextView>
+                    android:layout_height="192dp"></VideoView>
 
-                <TextView
-                    android:id="@+id/tvReleased"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="180dp"
-                    android:text="2019"
-                    android:textSize="20dp"></TextView>
+                <LinearLayout
+                    android:layout_width="96dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="140dp"
+                    android:background="@android:color/holo_blue_dark">
 
-                <TextView
-                    android:id="@+id/tvRutime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="180dp"
-                    android:text="2h 30 min"
-                    android:textSize="20dp"></TextView>
+                    <ImageView
+                        android:id="@+id/posterDatalhes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/common_full_open_on_phone" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="341dp"
-                    android:layout_marginTop="50dp"
-                    android:orientation="vertical"
-                    android:padding="15dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="200dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvLabelDescription"
+                        android:id="@+id/tvTitleMovie"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Description"
-                        android:textSize="30dp"
-                        android:textStyle="bold">
+                        android:layout_marginLeft="120dp"
+                        android:text="@{viewModel.movie.title}"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:typeface="sans">
 
                     </TextView>
 
                     <TextView
-                        android:id="@+id/tvDescription"
+                        android:id="@+id/tvReleased"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/description"
-                        android:textSize="25dp"></TextView>
+                        android:layout_marginLeft="120dp"
+                        android:text="@{viewModel.movie.released}"
+                        android:textSize="15dp">
 
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tvRutime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="120dp"
+                        android:text="@{viewModel.movie.runtime}"
+                        android:textSize="12dp">
+
+                    </TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="283dp"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:id="@+id/tvLabelDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Descricao"
+                            android:textSize="15dp"
+                            android:textStyle="bold">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/tvDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.movie.description}"
+                            android:textSize="12dp">
+
+                        </TextView>
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
 
+            </RelativeLayout>
 
-        </RelativeLayout>
+        </ScrollView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

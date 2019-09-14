@@ -1,7 +1,10 @@
 package com.kdias.thebestmovies.features.detalhesMovies.viewModel
 
+import android.util.Log
+import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.Disposable
+import com.google.firebase.database.*
+import com.kdias.thebestmovies.features.listaFilmes.fragment.model.Movie
 
 //https://medium.com/android-dev-br/android-ui-bottom-sheet-4709cad826d2
 //
@@ -14,21 +17,33 @@ import io.reactivex.disposables.Disposable
 
 class DetalhesMoviesViewModel : ViewModel(){
 
-    lateinit var subscribe: Disposable
-
-    init {
-        loadData()
+     val ref: DatabaseReference  by lazy {
+        FirebaseDatabase.getInstance().getReference()
     }
 
-    fun loadData() {
+    var movie : ObservableField<Movie> = ObservableField()
 
+    fun loadData( movieId: String) {
+
+        val select = ref.child("Movies").orderByChild("id").equalTo(movieId)
+
+        select.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()) {
+
+                    for (m in p0.children) {
+                        val movieResult = m.getValue(Movie::class.java)
+                        Log.e("movieresult", movieResult?.title)
+                        movie.set(movieResult)
+
+                    }
+                }
+            }
+
+        })
     }
-
-
-    override fun onCleared() {
-        super.onCleared()
-        subscribe.dispose()
-    }
-
-
 }
