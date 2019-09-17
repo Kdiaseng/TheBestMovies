@@ -37,7 +37,7 @@ class DetalhesMoviesViewModel : ViewModel(){
 
                     for (m in p0.children) {
                         val movieResult = m.getValue(Movie::class.java)
-                        Log.e("movieresult", movieResult?.title)
+                        Log.e("movieresult", movieResult?.poster)
                         movie.set(movieResult)
 
                     }
