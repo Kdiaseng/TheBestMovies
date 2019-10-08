@@ -40,7 +40,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        app:imageUrl="@{viewModel.movie.poster}"
+
                         android:src="@drawable/common_full_open_on_phone" />
 
                 </LinearLayout>
